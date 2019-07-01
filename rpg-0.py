@@ -39,6 +39,7 @@ class Character():
 
 hunter = Character(10, 5)
 gunter = Character(6,2)
+#zombie = Character(999, 2)
 
 #hunter.attack(gunter)
 #print(gunter.__dict__)
@@ -77,5 +78,5 @@ while gunter.alive() == True and hunter.alive()== True:
             # Goblin attacks hero
             hunter.health -= gunter.power
             print("The goblin does %d damage to you." % gunter.power)
-            if hunter.alive() ==True:
+            if hunter.alive() == False:
                 print("You are dead.")
