@@ -10,7 +10,7 @@ In this simple RPG game, the hero fights the goblin. He has the options to:
     hero_power = 5
     goblin_health = 6
     goblin_power = 2'''
-class Hero():
+class Character():
     def __init__(self, health, power):
         self.health = health
         self.power = power
@@ -25,7 +25,7 @@ class Hero():
 
 
 
-class Goblin():
+"""class Goblin():
     def __init__(self, health, power):
         self.health = health
         self.power = power
@@ -34,11 +34,11 @@ class Goblin():
     def alive(self):
        return self.health > 0
     def print_status(self):
-        print(self.health) 
+        print(self.health) """
     
 
-hunter = Hero(10, 5)
-gunter = Goblin(6,2)
+hunter = Character(10, 5)
+gunter = Character(6,2)
 
 #hunter.attack(gunter)
 #print(gunter.__dict__)
