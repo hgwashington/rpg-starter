@@ -42,6 +42,9 @@ gunter = Goblin(6,2)
 
 
 
+
+
+
 while gunter.alive() == True and hunter.alive()== True:
         print("You have %d health and %d power." % (hunter.health, hunter.power))
         print("The goblin has %d health and %d power." % (gunter.health, gunter.power))
