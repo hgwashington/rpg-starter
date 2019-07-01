@@ -14,18 +14,35 @@ class Hero():
     def __init__(self, health, power):
         self.health = health
         self.power = power
-hunter = Hero(10, 5)
+    def attack(self,enemy):
+        enemy.health -= self.power
+    def alive(self):
+       return self.health > 0
+           
+
+
+
 
 class Goblin():
     def __init__(self, health, power):
         self.health = health
         self.power = power
+    def attack(self,enemy):
+        enemy.health -= self.power
+    def alive(self):
+       return self.health > 0
+    
+
+hunter = Hero(10, 5)
 gunter = Goblin(6,2)
 
+#hunter.attack(gunter)
+#print(gunter.__dict__)
 
 
 
-while gunter.health > 0 and hunter.health > 0:
+
+while gunter.alive() == True and hunter.alive()== True:
         print("You have %d health and %d power." % (hunter.health, hunter.power))
         print("The goblin has %d health and %d power." % (gunter.health, gunter.power))
         print()
@@ -49,9 +66,9 @@ while gunter.health > 0 and hunter.health > 0:
         else:
             print("Invalid input %r" % user_input)
 
-        if gunter.health > 0:
+        if gunter.alive() == True:
             # Goblin attacks hero
             hunter.health -= gunter.power
             print("The goblin does %d damage to you." % gunter.power)
-            if hunter.health <= 0:
+            if hunter.alive() ==True:
                 print("You are dead.")
