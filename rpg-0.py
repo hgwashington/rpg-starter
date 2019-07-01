@@ -18,6 +18,8 @@ class Hero():
         enemy.health -= self.power
     def alive(self):
        return self.health > 0
+    def print_status(self):
+        print(self.health) 
            
 
 
@@ -31,6 +33,8 @@ class Goblin():
         enemy.health -= self.power
     def alive(self):
        return self.health > 0
+    def print_status(self):
+        print(self.health) 
     
 
 hunter = Hero(10, 5)
