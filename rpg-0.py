@@ -47,10 +47,7 @@ class Hero(Character):
     def attack(self, enemy):
         crit = random.randint(1,5)
         if crit == 1:
-            enemy.health -= self.power * 2
-            print("Critical Hit!")
-        else:
-            enemy.health -= self.power
+            self.power *= 2
 
 class Phantom(Character):
     def __init__(self, health, power, coins):
@@ -96,7 +93,11 @@ def battle(friend, enemy):
             what = input('''What would you like?
             Type 1 for super tonic
             Type 2 for armor
-            Type 3 for evade''')
+            Type 3 for evade
+            Type 4 for steroids
+            Type 5 for serum
+            Type 6 for swap
+            What will it be?: ''')
             if what == '1':
                 friend.health += 10
                 friend.coins -= 2
@@ -104,10 +105,27 @@ def battle(friend, enemy):
                 friend.give_armor()
                 friend.coins -= 2
             elif what == '3':
-                print("_________________")
-                print('')
-                print('Its on lay-away.')
-                print("_________________")
+                friend.health += enemy.power
+                # print("_________________")
+                # print('')
+                # print('Its on lay-away.')
+                # print("_________________")
+            elif what == '4':
+                friend.power += 5
+                friend.health -= 5
+                friend.coins -= 2
+            elif what == '5':
+                friend.power += 2
+                friend.health += 2
+                friend.coins -= 2
+            elif what == '6':
+                friend.health == enemy.health and enemy.health == friend.health
+                friend.power == enemy.power and enemy.power == friend.power
+                
+            else:
+                print("We dont have that here")
+                
+
         elif shop == 'no':
             print("_________________")
             print('')
@@ -147,6 +165,12 @@ def battle(friend, enemy):
         if friend.alive() == False:
             print("You are dead.")
 battle(hunter, wizard)
+
+
+
+
+
+
 # while True:
 #     battle(hunter, wizard)
 #     shop = input('''Would you like to shop?
