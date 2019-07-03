@@ -90,6 +90,30 @@ enemies = [gunter, wizard, zombie]'''
 
 def battle(friend, enemy):
     while enemy.alive() == True and friend.alive()== True:
+        shop = input('''Would you like to shop?
+        Type yes or no:  ''')
+        if shop == 'yes':
+            what = input('''What would you like?
+            Type 1 for super tonic
+            Type 2 for armor
+            Type 3 for evade''')
+            if what == '1':
+                friend.health += 10
+                friend.coins -= 2
+            elif what == '2':
+                friend.give_armor()
+                friend.coins -= 2
+            elif what == '3':
+                print("_________________")
+                print('')
+                print('Its on lay-away.')
+                print("_________________")
+        elif shop == 'no':
+            print("_________________")
+            print('')
+            print('Good Luck out there!')
+            print("_________________")
+
 
         print("You have %d health and %d power." % (friend.health, friend.power))
         print("The enemy has %d health and %d power." % (enemy.health, enemy.power))
@@ -113,8 +137,8 @@ def battle(friend, enemy):
         elif user_input == "3":
             print("Goodbye.")
             break
-        else:
-            print("Invalid input %r" % user_input)
+        # else:
+        #     print("Invalid input %r" % user_input)
 
         if enemy.alive() == True:
                 # enemy attacks hero
@@ -122,26 +146,27 @@ def battle(friend, enemy):
             print("The enemy does %d damage to you." % enemy.power)
         if friend.alive() == False:
             print("You are dead.")
-while True:
-    battle(hunter, wizard)
-    shop = input('''Would you like to shop?
-    Type yes or no:  ''')
-    if shop == 'yes':
-        what = input('''What would you like?
-        Type 1 for super tonic
-        Type 2 for armor
-        Type 3 for evade''')
-        if what == '1':
-            hunter.health += 10
-            hunter.coins -= 2
-        elif what == '2':
-            hunter.give_armor()
-            hunter.coins -= 2
-        elif what == '3':
-            print('Too Bad')
-    elif shop == 'no':
-        print('Good Luck out there!')
-        break
+battle(hunter, wizard)
+# while True:
+#     battle(hunter, wizard)
+#     shop = input('''Would you like to shop?
+#     Type yes or no:  ''')
+#     if shop == 'yes':
+#         what = input('''What would you like?
+#         Type 1 for super tonic
+#         Type 2 for armor
+#         Type 3 for evade''')
+#         if what == '1':
+#             hunter.health += 10
+#             hunter.coins -= 2
+#         elif what == '2':
+#             hunter.give_armor()
+#             hunter.coins -= 2
+#         elif what == '3':
+#             print('Too Bad')
+#     elif shop == 'no':
+#         print('Good Luck out there!')
+#         break
             
     
       
