@@ -87,50 +87,57 @@ enemies = [gunter, wizard, zombie]'''
 
 def battle(friend, enemy):
     while enemy.alive() == True and friend.alive()== True:
-        shop = input('''Would you like to shop?
-        Type yes or no:  ''')
-        if shop == 'yes':
-            what = input('''What would you like?
-            Type 1 for super tonic
-            Type 2 for armor
-            Type 3 for evade
-            Type 4 for steroids
-            Type 5 for serum
-            Type 6 for swap
-            What will it be?: ''')
-            if what == '1':
-                friend.health += 10
-                friend.coins -= 2
-            elif what == '2':
-                friend.give_armor()
-                friend.coins -= 2
-            elif what == '3':
-                friend.health += enemy.power
-                # print("_________________")
-                # print('')
-                # print('Its on lay-away.')
-                # print("_________________")
-            elif what == '4':
-                friend.power += 5
-                friend.health -= 5
-                friend.coins -= 2
-            elif what == '5':
-                friend.power += 2
-                friend.health += 2
-                friend.coins -= 2
-            elif what == '6':
-                friend.health == enemy.health and enemy.health == friend.health
-                friend.power == enemy.power and enemy.power == friend.power
-                
-            else:
-                print("We dont have that here")
+        if friend.coins > 1:
+            shop = input('''Would you like to shop?
+            Type yes or no:  ''')
+            if shop == 'yes':
+                chance = random.randint(1,10)
+                what = input('''What would you like?
+                Type 1 for super tonic
+                Type 2 for armor
+                Type 3 for evade
+                Type 4 for steroids
+                Type 5 for serum
+                Type 6 for swap
+                What will it be?: ''')
+                if what == '1':
+                    friend.health += 10
+                    friend.coins -= 2
+                elif what == '2':
+                    friend.give_armor()
+                    friend.coins -= 2
+                elif what == '3':
+                    if chance == 10:
+                        friend.health += enemy.power
+                    
+                elif what == '4':
+                    friend.power += 5
+                    friend.health /= 2 
+                    friend.coins -= 2
+                    print("_________________")
+                    print("That's a slippery slope, but okay dude. I mean, its your body...")
+                    print("_________________")
+                elif what == '5':
+                    friend.power += 2
+                    friend.health += 2
+                    friend.coins -= 2
+                    print("_________________")
+                    print("Not as potent as roids, but not as deadly either...")
+                    print("_________________")
+                elif what == '6':
+                    friend.health == enemy.health and enemy.health == friend.health
+                    friend.power == enemy.power and enemy.power == friend.power
+                    friend.coins -= 2
+                    
+                else:
+                    print("We dont have that here")
                 
 
-        elif shop == 'no':
-            print("_________________")
-            print('')
-            print('Good Luck out there!')
-            print("_________________")
+            elif shop == 'no':
+                print("_________________")
+                print('')
+                print('Good Luck out there!')
+                print("_________________")
 
 
         print("You have %d health and %d power." % (friend.health, friend.power))
@@ -153,7 +160,7 @@ def battle(friend, enemy):
         elif user_input == "2":
             pass
         elif user_input == "3":
-            print("Goodbye.")
+            print("Goodbye, you coward.")
             break
         # else:
         #     print("Invalid input %r" % user_input)
